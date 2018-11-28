@@ -11,6 +11,9 @@ branches:
     - release/*
 
 build:
+  pre_ci:
+    - composer self-update -n
+    - composer install --prefer-dist -n
   ci:
     - composer install
     - ./vendor/bin/phpunit --bootstrap vendor/autoload.php
