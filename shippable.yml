@@ -1,0 +1,18 @@
+#### CI CONFIG
+
+language: php
+
+php:
+  - 7.1.24
+
+branches:
+  only:
+    - master
+    - release/*
+
+build:
+  ci:
+    - composer install
+    - ./vendor/bin/phpunit --bootstrap vendor/autoload.php
+
+#### END CI CONFIG
