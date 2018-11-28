@@ -12,6 +12,7 @@ branches:
 
 build:
   pre_ci:
+    - php composer-setup.php
     - composer self-update -n
     - composer install --prefer-dist -n
   ci:
