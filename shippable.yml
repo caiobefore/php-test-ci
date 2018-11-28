@@ -12,9 +12,8 @@ branches:
 
 build:
   pre_ci:
-    - php composer-setup.php
-    - composer self-update -n
-    - composer install --prefer-dist -n
+    - mkdir -p shippable/testresults
+    - mkdir -p shippable/codecoverage
   ci:
     - composer install
     - ./vendor/bin/phpunit --bootstrap vendor/autoload.php
