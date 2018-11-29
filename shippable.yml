@@ -19,5 +19,7 @@ build:
     - ./vendor/bin/phpunit --bootstrap vendor/autoload.php
   post_ci:
     - ls -lah $SHIPPABLE_BUILD_DIR
+    - pwd
+    - ls -lah
 
 #### END CI CONFIG
