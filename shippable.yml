@@ -24,4 +24,9 @@ build:
     - ls -lah shippable/codecoverage
     - ls -lah shippable/testresults
 
+integrations:
+  hub:
+    - integrationName: docker-registry-integration
+      type: dockerRegistryLogin
+      
 #### END CI CONFIG
