@@ -10,23 +10,27 @@ branches:
     - master
     - release/*
 
-build:
+# build:
 #   pre_ci:
 #     - mkdir -p shippable/testresults
 #     - mkdir -p shippable/codecoverage
-  ci:
-    - composer install
-    - ./vendor/bin/phpunit --bootstrap vendor/autoload.php
-  post_ci:
-    - ls -lah $SHIPPABLE_BUILD_DIR
-    - pwd
-    - ls -lah shippable/buildoutput
-    - ls -lah shippable/codecoverage
-    - ls -lah shippable/testresults
-
-integrations:
-  hub:
-    - integrationName: docker-registry-integration
-      type: dockerRegistryLogin
+#   ci:
+#     - composer install
+#     - ./vendor/bin/phpunit --bootstrap vendor/autoload.php
+#   post_ci:
+#     - ls -lah $SHIPPABLE_BUILD_DIR
+#     - pwd
+#     - ls -lah shippable/buildoutput
+#     - ls -lah shippable/codecoverage
+#     - ls -lah shippable/testresults
       
+jobs:
+  - name:               myJog
+    type:               runSh
+    dependencyMode:     <chrono/strict/immediate>
+    steps:
+      - TASK:
+        - script:           composer install
+        - script:           ./vendor/bin/phpunit --bootstrap vendor/autoload.php
+
 #### END CI CONFIG
