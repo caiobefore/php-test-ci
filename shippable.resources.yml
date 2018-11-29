@@ -1,4 +1,4 @@
 resources:
   - name: commitResource
     type: gitRepo
-    integration: github
+    integration: Test
