@@ -20,6 +20,6 @@ build:
   post_ci:
     - ls -lah $SHIPPABLE_BUILD_DIR
     - pwd
-    - ls -lah
+    - ls -lah shippable/
 
 #### END CI CONFIG
