@@ -20,6 +20,8 @@ build:
   post_ci:
     - ls -lah $SHIPPABLE_BUILD_DIR
     - pwd
-    - ls -lah shippable/
+    - ls -lah shippable/buildoutput
+    - ls -lah shippable/codecoverage
+    - ls -lah shippable/testresults
 
 #### END CI CONFIG
