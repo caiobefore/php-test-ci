@@ -1,0 +1,3 @@
+resources:
+  - name:               commitResource
+    type:               gitRepo
