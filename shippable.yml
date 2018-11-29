@@ -23,13 +23,5 @@ branches:
 #     - ls -lah shippable/buildoutput
 #     - ls -lah shippable/codecoverage
 #     - ls -lah shippable/testresults
-      
-jobs:
-  - name:               myJob
-    type:               runSh
-    steps:
-      - TASK:
-        - script:           composer install
-        - script:           ./vendor/bin/phpunit --bootstrap vendor/autoload.php
 
 #### END CI CONFIG
