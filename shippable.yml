@@ -5,9 +5,9 @@ language: php
 php:
   - 7.1
 
-branches:
-  only:
-    - master
-    - release/*
+script:
+  - pwd
+  - echo 'inside shippable.yml'
+  - ls -lah
 
 #### END CI CONFIG
