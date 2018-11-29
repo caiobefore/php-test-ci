@@ -1,3 +1,4 @@
 resources:
-  - name:               commitResource
-    type:               gitRepo
+  - name: commitResource
+    type: gitRepo
+    integration: github
