@@ -11,9 +11,9 @@ branches:
     - release/*
 
 build:
-  pre_ci:
-    - mkdir -p shippable/testresults
-    - mkdir -p shippable/codecoverage
+#   pre_ci:
+#     - mkdir -p shippable/testresults
+#     - mkdir -p shippable/codecoverage
   ci:
     - composer install
     - ./vendor/bin/phpunit --bootstrap vendor/autoload.php
