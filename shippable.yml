@@ -17,5 +17,7 @@ build:
   ci:
     - composer install
     - ./vendor/bin/phpunit --bootstrap vendor/autoload.php
+  post_ci:
+    - ls -lah /root/src/github.com/caiobefore/php-test-ci/shippable/buildoutput
 
 #### END CI CONFIG
