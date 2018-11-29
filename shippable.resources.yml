@@ -1,4 +1,0 @@
-resources:
-  - name: commitResource
-    type: gitRepo
-    integration: Test
