@@ -1,0 +1,4 @@
+resources:
+  - name: project_repo
+    type: gitRepo
+    integration: github
