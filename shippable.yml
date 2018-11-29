@@ -25,9 +25,8 @@ branches:
 #     - ls -lah shippable/testresults
       
 jobs:
-  - name:               myJog
+  - name:               myJob
     type:               runSh
-    dependencyMode:     <chrono/strict/immediate>
     steps:
       - TASK:
         - script:           composer install
