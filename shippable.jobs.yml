@@ -1,0 +1,7 @@
+jobs:
+  - name:               myJob
+    type:               runSh
+    steps:
+      - TASK:
+        - script:           composer install
+        - script:           ./vendor/bin/phpunit --bootstrap vendor/autoload.php
