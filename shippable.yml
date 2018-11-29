@@ -10,16 +10,4 @@ branches:
     - master
     - release/*
 
-build:
-  ci:
-#     - composer install
-#     - ./vendor/bin/phpunit --bootstrap vendor/autoload.php
-    - ls -lah
-  post_ci:
-    - ls -lah $SHIPPABLE_BUILD_DIR
-    - pwd
-    - ls -lah shippable/buildoutput
-    - ls -lah shippable/codecoverage
-    - ls -lah shippable/testresults
-
 #### END CI CONFIG
