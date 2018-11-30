@@ -1,7 +1,5 @@
 jobs:
-  - name: build-app
-    type: runSh
+  - name: php-test-ci_runCI
+    type: runCI
     steps:
-      - IN: php-test-ci_runCI
-      - TASK:
-        - script: echo 'printed from job!!'
+      - OUT: fazer-deploy-no-docker-hub
