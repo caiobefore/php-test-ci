@@ -2,10 +2,6 @@ jobs:
   - name: build-app
     type: runSh
     steps:
-      - IN: project_repo
+      - IN: php-test-ci_runCI
       - TASK:
         - script: echo 'printed from job!!'
-    on_success:
-      - script: echo 'on success !!!!!'
-    on_failure:
-      - script: echo 'Failed job .... :('
