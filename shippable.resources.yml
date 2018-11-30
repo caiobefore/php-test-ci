@@ -1,4 +1,7 @@
 resources:
+  - name: php-test-ci_runCI
+    type: runCI
+  
   - name: project_repo
     type: gitRepo
     integration: github
