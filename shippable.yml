@@ -1,98 +1,13 @@
-# Language setting http://docs.shippable.com/ci/languages/node/
-language: node_js
+#### CI CONFIG
 
-# # use this to control what branches get built.
-# # http://docs.shippable.com/ci/advancedOptions/branches/
-# branches:
-#   only:
-#     - master
+language: php
 
+php:
+  - 7.1
 
-# using pre-defined build variables
-# full list http://docs.shippable.com/ci/advancedOptions/environmentVariables/
-env:
-  global:
-    - TEST_RESULTS_DIR=$SHIPPABLE_REPO_DIR/shippable/testresults
-    - CODE_COVERAGE_DIR=$SHIPPABLE_REPO_DIR/shippable/codecoverage
-    - TESTS_LOC_DIR=$SHIPPABLE_REPO_DIR/tests
-    - MOD_LOC=$SHIPPABLE_REPO_DIR/node_modules/.bin/
-    - ECR_REPO=6608506653279.dkr.ecr.us-east-1.amazonaws.com/deploy-ecs-basic
+script:
+  - pwd
+  - echo 'inside shippable.yml'
+  - ls -lah
 
-build:
-
-  # http://docs.shippable.com/ci/shippableyml/#ci
-  ci:
-    # npm mirrors can sometimes be flacky, better to use shippable_retry
-    # http://docs.shippable.com/ci/advancedOptions/retry/
-    - ls -lah
-
-  
-# Integrations are used to connect external resources to CI
-# http://docs.shippable.com/integrations/overview/
-integrations:
-  # adding awsKeys integration so that credentials are available to CI Job
-  # http://docs.shippable.com/platform/integration/aws-keys/
-  hub:
-    - integrationName: dr-aws-keys
-      type: amazonKeys
-
-
-resources:
-  - name: deploy-ecs-basic-image
-    type: image
-    integration: dr-aws-keys
-    pointer:
-      sourceName: "6608650653279.dkr.ecr.us-east-1.amazonaws.com/deploy-ecs-basic"
-    seed:
-      versionName: "latest"
-
-  - name: deploy-ecs-basic-params
-    type: params
-    version:
-      params:
-        PORT: 80
-        ENVIRONMENT: "dev"
-
-  - name: deploy-ecs-basic-docker-options
-    type: dockerOptions
-    versionTemplate:
-      linuxParameters:
-        initProcessEnabled: true
-      memory: 100
-      portMappings:
-        - 80:80
-
-  - name: deploy-ecs-basic-replicas
-    type: replicas
-    version:
-      count: 1
-
-  - name: deploy-ecs-basic-ecs-cluster
-    type: cluster
-    integration: dr-aws-keys
-    pointer:
-      sourceName : "deploy-ecs-basic" #name of the cluster to which we are deploying
-      region: "us-east-1"
-
-
-jobs:
-  - name: deploy-ecs-basic_runCI
-    type: runCI
-    steps:
-      - OUT: deploy-ecs-basic-image
-
-  - name: deploy-ecs-basic-manifest
-    type: manifest
-    steps:
-     - IN: deploy-ecs-basic-image
-     - IN: deploy-ecs-basic-docker-options
-     - IN: deploy-ecs-basic-params
-     - IN: deploy-ecs-basic-replicas
-
-  - name: deploy-ecs-basic-deploy
-    type: deploy
-    steps:
-      - IN: deploy-ecs-basic-manifest
-      - IN: deploy-ecs-basic-ecs-cluster
-      - TASK: managed
-        deployMethod: replace
+#### END CI CONFIG
